@@ -4,22 +4,36 @@
 # param_2 = obj.search(word)
 # param_3 = obj.startsWith(prefix)
 
+
+class Node:
+
+    def __init__(self, letter=None):
+        self.letter = letter
+        self.children = []
+        self.terminate = False
+        self.word = None
+
+    def get_child_with_letter(self, letter):
+        for child in self.children:
+            if child.letter == letter:
+                return child
+        return None
+
+
 class Trie:
 
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        self.letter = None
-        self.children = []
-        self.terminate = False
+        self.root = Node()
 
     def insert(self, word: str) -> None:
         """
         Inserts a word into the trie.
         """
         letters = list(word)
-        current_node = self
+        current_node = self.root
 
         def find_node(parent_node, letter):
             for child in parent_node.children:
@@ -30,12 +44,13 @@ class Trie:
         for idx, letter in enumerate(letters):
             child_node = find_node(current_node, letter)
             if child_node is None:
-                child_node = Trie()
+                child_node = Node()
                 child_node.letter = letter
                 current_node.children.append(child_node)
             current_node = child_node
             if idx == len(letters) - 1:
                 current_node.terminate = True
+                current_node.word = word
 
     def search(self, word: str) -> bool:
         """
@@ -53,9 +68,9 @@ class Trie:
             else:
                 for each_child in current_node.children:
                     if remaining_letters[0] == each_child.letter:
-                        return recur(each_child, remaining_letters[1:])
+                        recur(each_child, remaining_letters[1:])
 
-        recur(self, letters_to_search)
+        recur(self.root, letters_to_search)
 
         return ans
 
@@ -77,7 +92,7 @@ class Trie:
                     if letter_to_search == each_child.letter:
                         recur(each_child, remaining_letters)
 
-        recur(self, letters_to_search)
+        recur(self.root, letters_to_search)
 
         return ans
 
