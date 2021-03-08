@@ -1,4 +1,4 @@
-from CodingPractice.BinaryNodeTree import BinaryTree
+from CodingPractice.Python.algorithmic.BinaryNodeTree import BinaryTree
 
 
 if __name__ == '__main__':
