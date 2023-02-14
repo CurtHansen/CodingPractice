@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/curthansen/Coding/CodingPractice/C++/src/main.cpp
+iostream
+-
+vector
+-
+string
+-
+map
+-
+deque
+-
+queue
+-
+stack
+-
+unordered_set
+-
+template.hpp
+/Users/curthansen/Coding/CodingPractice/C++/src/template.hpp
+
+/Users/curthansen/Coding/CodingPractice/C++/src/template.hpp
+
